@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-
 public class AutoParts {
     private String vendor;
     private String dimension;
@@ -23,7 +22,6 @@ public class AutoParts {
     }
 
     public AutoParts() {
-
     }
 
     public String getVendor() {
@@ -82,10 +80,10 @@ public class AutoParts {
         for (int i = 0; i < list.size(); i++) {
             if (str.equalsIgnoreCase(list.get(i).getVendor())) {
                 temp.add(list.get(i));
-            } else System.err.println("\nError, cant find this vendor!\n");
+            }
         }
         Collections.sort(temp, new Comparator<AutoParts>() {
-            @Override //переопределение метода
+            @Override
             public int compare(AutoParts v1, AutoParts v2) {
                 return v1.getDimension().substring(4, 7).compareTo(v2.getDimension().substring(4, 7));
             }
@@ -109,23 +107,31 @@ public class AutoParts {
     }
 
     public void mostRich(ArrayList<AutoParts> list, String str) {
-        ArrayList <AutoParts> temp = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            String strTemp1 = list.get(i).getDimension().replaceAll("[-]", "");
-            String strTemp2 = str.replaceAll("[-]", "");
-            if (Integer.parseInt(strTemp1) <= Integer.parseInt(strTemp2)) {
-                temp.add(list.get(i));
-            } else if (list.get(i).getPrice() > list.get(i + 1).getPrice()) {
-                temp.add(list.get(i));
-            }
-        }
+        ArrayList<AutoParts> temp = new ArrayList<>();
+        String strTemp1 = str.replaceAll("[-]", "");
         System.out.println("Sorted list by most rich part: ");
-        for (int i = 0; i < temp.size(); i++) {
-            System.out.println("\nVendor: " + temp.get(i).getVendor()
-                    + "\nDimension: " + temp.get(i).getDimension()
-                    + "\nPrice: " + temp.get(i).getPrice()
-                    + "\nAvailable count: " + temp.get(i).getAvailableSpace());
+        for (int i = 0; i < list.size(); i++) {
+            String strTemp2 = list.get(i).getDimension().replaceAll("[-]", "");
+            if (Integer.parseInt(strTemp1) >= Integer.parseInt(strTemp2))
+                temp.add(list.get(i));
         }
+        Collections.sort(temp, new Comparator<AutoParts>() {
+            @Override
+            public int compare(AutoParts v1, AutoParts v2) {
+                return Float.compare(v2.getPrice(), v1.getPrice());
+            }
+        });
+        //for java 8
+        //Collections.sort(temp, Comparator.comparing(AutoParts::getPrice));
+
+        //for (int i = 0; i < temp.size(); i++) {
+            //if (temp.get(i).getPrice() < temp.get(i + 1).getPrice()) {
+            System.out.println("\nVendor: " + temp.get(0).getVendor()
+                    + "\nDimension: " + temp.get(0).getDimension()
+                    + "\nPrice: " + temp.get(0).getPrice()
+                    + "\nAvailable count: " + temp.get(0).getAvailableSpace());
+            //}
+        //}
     }
 
 /**TODO//

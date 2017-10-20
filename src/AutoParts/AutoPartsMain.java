@@ -43,22 +43,17 @@ public class AutoPartsMain {
                 case "sortVendor": {
                     System.err.println("Set name Vendor: ");
                     Parts.sortAscending(list, scan.next());
-                    System.err.println("Done.");
                     Parts.userMenu();
                     break;
                 }
                 case "mostRich": {
                     System.err.println("Set dimensions: ");
                     Parts.mostRich(list, scan.next());
-                    System.err.println("Done.");
                     Parts.userMenu();
                     break;
                 }
                 case "exit":
                     System.exit(0);
-                default:
-                    System.err.println("Error, type correct command!\n");
-                    break;
             }
         }
     }
