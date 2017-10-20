@@ -94,7 +94,7 @@ public class AutoParts {
         for (int i = 0; i < temp.size(); i++) {
             System.out.println("\nVendor: " + temp.get(i).getVendor()
                     + "\nDimension: " + temp.get(i).getDimension()
-                    + "\nPrice: " + temp.get(i).getPrice();
+                    + "\nPrice: " + temp.get(i).getPrice()
                     + "\nAvailable count: " + temp.get(i).getAvailableSpace());
         }
     }
@@ -123,7 +123,7 @@ public class AutoParts {
         for (int i = 0; i < temp.size(); i++) {
             System.out.println("\nVendor: " + temp.get(i).getVendor()
                     + "\nDimension: " + temp.get(i).getDimension()
-                    + "\nPrice: " + temp.get(i).getPrice();
+                    + "\nPrice: " + temp.get(i).getPrice()
                     + "\nAvailable count: " + temp.get(i).getAvailableSpace());
         }
     }
