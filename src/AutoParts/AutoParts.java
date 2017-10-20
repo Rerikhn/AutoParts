@@ -76,19 +76,26 @@ public class AutoParts {
     }
 
     public void sortAscending(ArrayList<AutoParts> list, String str) { //сортировка по возрастанию по полю "Габариты"
-        //ArrayList<AutoParts.AutoParts> temp = new ArrayList<>(list);
+        ArrayList<AutoParts.AutoParts> temp = new ArrayList<>();
         //проверка на совпадение со строкой Vendor
         for (int i = 0; i < list.size(); i++) {
-            if (!(str.equalsIgnoreCase(list.get(i).getVendor()))) {
-                list.remove(i);
+            if (str.equalsIgnoreCase(list.get(i).getVendor())) {
+                temp.add(list.get(i));
             } else System.err.println("\nError, cant find this vendor!\n");
         }
-        Collections.sort(list, new Comparator<AutoParts>() {
+        Collections.sort(temp, new Comparator<AutoParts>() {
             @Override //переопределение метода
             public int compare(AutoParts v1, AutoParts v2) {
                 return v1.getDimension().substring(4, 7).compareTo(v2.getDimension().substring(4, 7));
             }
         });
+        for (int i = 0; i < temp.size(); i++) {
+            System.out.println("\n\nAuto Part: " + (i + 1)
+                    + "\nVendor: " + temp.get(i).getVendor()
+                    + "\nDimension: " + temp.get(i).getDimension()
+                    + "\nPrice: " + temp.get(i).getPrice();
+                    + "\nAvailable count: " + temp.get(i).getAvailableSpace());
+        }
     }
 
     public void userMenu() {
