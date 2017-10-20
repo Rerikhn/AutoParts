@@ -37,6 +37,7 @@ public class AutoPartsMain {
                     } else {
                         System.err.println("\nList is empty!");
                     }
+                    Parts.userMenu();
                     break;
                 }
                 case "sortVendor": {
@@ -50,7 +51,7 @@ public class AutoPartsMain {
                     System.err.println("Set dimensions: ");
                     Parts.mostRich(list, scan.next());
                     System.err.println("Done.");
-                    Parts.viewList(list);
+                    Parts.userMenu();
                     break;
                 }
                 case "exit":
