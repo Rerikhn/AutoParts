@@ -23,7 +23,7 @@ public class AutoParts {
     }
 
     public AutoParts() {
-        ///....
+
     }
 
     public String getVendor() {
