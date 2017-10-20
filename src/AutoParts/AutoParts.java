@@ -23,6 +23,7 @@ public class AutoParts {
     }
 
     public AutoParts() {
+        ///....
     }
 
     public String getVendor() {
@@ -76,7 +77,7 @@ public class AutoParts {
     }
 
     public void sortAscending(ArrayList<AutoParts> list, String str) { //сортировка по возрастанию по полю "Габариты"
-        ArrayList<AutoParts.AutoParts> temp = new ArrayList<>();
+        ArrayList<AutoParts> temp = new ArrayList<>();
         //проверка на совпадение со строкой Vendor
         for (int i = 0; i < list.size(); i++) {
             if (str.equalsIgnoreCase(list.get(i).getVendor())) {
@@ -89,9 +90,9 @@ public class AutoParts {
                 return v1.getDimension().substring(4, 7).compareTo(v2.getDimension().substring(4, 7));
             }
         });
+        System.out.println("Sorted list by Vendor: ");
         for (int i = 0; i < temp.size(); i++) {
-            System.out.println("\n\nAuto Part: " + (i + 1)
-                    + "\nVendor: " + temp.get(i).getVendor()
+            System.out.println("\nVendor: " + temp.get(i).getVendor()
                     + "\nDimension: " + temp.get(i).getDimension()
                     + "\nPrice: " + temp.get(i).getPrice();
                     + "\nAvailable count: " + temp.get(i).getAvailableSpace());
@@ -99,7 +100,7 @@ public class AutoParts {
     }
 
     public void userMenu() {
-        System.err.println("\nEnter the key... " +
+        System.out.println("\nEnter the key... " +
                 "\nType\"add\"to add new auto part." +
                 "\nType\"print\" to view all list." +
                 "\nType\"sortVendor\" to sort parts by ascending of dimension." +
@@ -108,14 +109,22 @@ public class AutoParts {
     }
 
     public void mostRich(ArrayList<AutoParts> list, String str) {
+        ArrayList <AutoParts> temp = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             String strTemp1 = list.get(i).getDimension().replaceAll("[-]", "");
             String strTemp2 = str.replaceAll("[-]", "");
-            if (Integer.parseInt(strTemp1) >= Integer.parseInt(strTemp2)) {
-                list.remove(i);
-            } else if (list.get(i).getPrice() < list.get(i + 1).getPrice()) {
-                list.remove(i);
+            if (Integer.parseInt(strTemp1) <= Integer.parseInt(strTemp2)) {
+                temp.add(list.get(i));
+            } else if (list.get(i).getPrice() > list.get(i + 1).getPrice()) {
+                temp.add(list.get(i));
             }
+        }
+        System.out.println("Sorted list by most rich part: ");
+        for (int i = 0; i < temp.size(); i++) {
+            System.out.println("\nVendor: " + temp.get(i).getVendor()
+                    + "\nDimension: " + temp.get(i).getDimension()
+                    + "\nPrice: " + temp.get(i).getPrice();
+                    + "\nAvailable count: " + temp.get(i).getAvailableSpace());
         }
     }
 
