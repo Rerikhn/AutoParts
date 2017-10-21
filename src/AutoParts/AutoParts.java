@@ -74,7 +74,7 @@ public class AutoParts {
         }
     }
 
-    public void sortAscending(ArrayList<AutoParts> list, String str) { //сортировка по возрастанию по полю "Габариты"
+    public void sortAscending(ArrayList<AutoParts> list, String str) {
         ArrayList<AutoParts> temp = new ArrayList<>();
         //проверка на совпадение со строкой Vendor
         for (int i = 0; i < list.size(); i++) {
@@ -85,10 +85,11 @@ public class AutoParts {
         Collections.sort(temp, new Comparator<AutoParts>() {
             @Override
             public int compare(AutoParts v1, AutoParts v2) {
+                //сравнение по второму блоку "Габаритов"
                 return v1.getDimension().substring(4, 7).compareTo(v2.getDimension().substring(4, 7));
             }
         });
-        System.out.println("Sorted list by Vendor: ");
+        System.out.println("\nShowing list of " + str + "parts sorted by ascending of dimensions:");
         for (int i = 0; i < temp.size(); i++) {
             System.out.println("\nVendor: " + temp.get(i).getVendor()
                     + "\nDimension: " + temp.get(i).getDimension()
@@ -123,20 +124,19 @@ public class AutoParts {
         });
         //for java 8
         //Collections.sort(temp, Comparator.comparing(AutoParts::getPrice));
-
         //for (int i = 0; i < temp.size(); i++) {
-            //if (temp.get(i).getPrice() < temp.get(i + 1).getPrice()) {
-            System.out.println("\nVendor: " + temp.get(0).getVendor()
-                    + "\nDimension: " + temp.get(0).getDimension()
-                    + "\nPrice: " + temp.get(0).getPrice()
-                    + "\nAvailable count: " + temp.get(0).getAvailableSpace());
-            //}
+        //if (temp.get(i).getPrice() < temp.get(i + 1).getPrice()) {
+        System.out.println("\nVendor: " + temp.get(0).getVendor()
+                + "\nDimension: " + temp.get(0).getDimension()
+                + "\nPrice: " + temp.get(0).getPrice()
+                + "\nAvailable count: " + temp.get(0).getAvailableSpace());
+        //}
         //}
     }
 
 /**TODO//
  DONE  1) Ascending sort by 3rd block of dimension;
- DONE  2) Finding parts by Vendor name;
+ DONE  2) Finding parts by Vendor name and sort by most rich price;
  DONE 3) public void mostRichPart () {
  }*/
 }
