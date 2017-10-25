@@ -37,13 +37,10 @@ public class AutoPartsExtend extends AutoParts {
                 return Integer.compare(o1.getDurability(), o2.getDurability());
             }
         });
+    }
 
-        for (int i = 0; i < temp.size(); i++) {
-            System.out.println("\nVendor: " + temp.get(i).getVendor()
-                    + "\nDimension: " + temp.get(i).getDimension()
-                    + "\nPrice: " + temp.get(i).getPrice()
-                    + "\nAvailable count: " + temp.get(i).getAvailableSpace()
-                    + "\nDurability: " + temp.get(i).getDurability());
-        }
+    @Override
+    public void sortAscending(ArrayList<AutoParts> list, String str) {
+        super.sortAscending(list, str);
     }
 }

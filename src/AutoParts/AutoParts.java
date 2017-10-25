@@ -41,25 +41,25 @@ public class AutoParts {
     }
 
     public void setAvailableSpace(int availableSpace) {
-        if (availableSpace <= 0) System.err.println("Error, value must be more than zero.");
+        if (availableSpace <= 0) System.err.println("Error, value cannot be negative.");
         else
             this.availableSpace = availableSpace;
     }
 
     public void setDimension(String dimension) {
-        /*if (dimension.length() < 11) System.err.println("Error, size is not compatible.");
-        else*/
-        this.dimension = dimension;
+        if (dimension.length() < 11 | dimension.isEmpty()) System.err.println("Error format.");
+        else
+            this.dimension = dimension;
     }
 
     public void setPrice(float price) {
-        if (price <= 0) System.err.println("Error, value must be more than zero.");
+        if (price <= 0) System.err.println("Error, value cannot be negative.");
         else
             this.price = price;
     }
 
     public void setVendor(String vendor) {
-        if (vendor.isEmpty()) System.err.println("Error, is empty.");
+        if (vendor.isEmpty()) System.err.println("Error, cannot be empty.");
         else
             this.vendor = vendor;
     }
